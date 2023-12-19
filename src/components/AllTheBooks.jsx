@@ -91,6 +91,7 @@ class AllTheBooks extends Component {
                                     <Card.Title>{book.title}</Card.Title>
                                     <Card.Text className="fs-3 text-primary">{book.price}$</Card.Text>
                                     <ButtonComponent theme="success" Btncontent="Add To Cart" />
+                                    <ButtonComponent theme="danger" Btncontent="Eliminate" />
                                 </Card.Body>
                             </Card>
                         </Col>
