@@ -80,9 +80,13 @@ class AllTheBooks extends Component {
                     </div>
 
                     {books.map((book) => (
-                        <Col key={`book-${book.asin}`} xs={3} className="my-2 p-3">
+                        <Col key={`book-${book.asin}`} xs={12} md={6} lg={4} className="my-2 p-3">
                             <Card className="h-100">
-                                <Card.Img variant="top" src={book.img} className="img-format" />
+                                <div className="h-100">
+                                    {" "}
+                                    <Card.Img variant="top" src={book.img} className="img-format" />
+                                </div>
+
                                 <Card.Body className="h-auto d-flex flex-column justify-content-center">
                                     <Card.Title>{book.title}</Card.Title>
                                     <Card.Text className="fs-3 text-primary">{book.price}$</Card.Text>

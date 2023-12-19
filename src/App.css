@@ -39,7 +39,7 @@
 
 .img-format {
     max-width: 250px;
-    height: 50%;
+    height: 100%;
     object-fit: cover;
     object-position: top;
 }
