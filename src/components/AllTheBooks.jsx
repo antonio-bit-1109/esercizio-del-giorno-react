@@ -10,7 +10,6 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 
 class AllTheBooks extends Component {
-    state = { currentType: null };
     render() {
         return (
             <Container>
