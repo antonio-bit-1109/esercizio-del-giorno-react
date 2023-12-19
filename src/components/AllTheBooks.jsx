@@ -12,42 +12,10 @@ import ButtonComponent from "./ButtonComponent";
 
 class AllTheBooks extends Component {
     state = {
-        books: sciFiBooks,
-        currentCategory: "Sci-fi", // Add currentCategory to the state
-    };
-
-    changeCategory = (category) => {
-        let newBooks;
-
-        switch (category) {
-            case "Fantasy":
-                newBooks = fantasyBooks;
-                break;
-            case "Horror":
-                newBooks = horrorBooks;
-                break;
-            case "History":
-                newBooks = historyBooks;
-                break;
-            case "Romance":
-                newBooks = romanceBooks;
-                break;
-            case "Sci-fi":
-                newBooks = sciFiBooks;
-                break;
-            default:
-                newBooks = sciFiBooks; // Default to Sci-fi
-        }
-
-        this.setState({
-            currentCategory: category,
-            books: newBooks,
-        });
+        books: fantasyBooks,
     };
 
     render() {
-        const { books } = this.state;
-
         return (
             <Container>
                 <Row>
@@ -55,31 +23,41 @@ class AllTheBooks extends Component {
                         <ButtonComponent
                             theme="danger"
                             Btncontent="Fantasy"
-                            onClick={() => this.changeCategory("Fantasy")}
+                            onClick={() => {
+                                this.setState({ books: fantasyBooks });
+                            }}
                         />
                         <ButtonComponent
                             theme="info"
                             Btncontent="Horror"
-                            onClick={() => this.changeCategory("Horror")}
+                            onClick={() => {
+                                this.setState({ books: horrorBooks });
+                            }}
                         />
                         <ButtonComponent
                             theme="success"
                             Btncontent="History"
-                            onClick={() => this.changeCategory("History")}
+                            onClick={() => {
+                                this.setState({ books: historyBooks });
+                            }}
                         />
                         <ButtonComponent
                             theme="primary"
                             Btncontent="Romance"
-                            onClick={() => this.changeCategory("Romance")}
+                            onClick={() => {
+                                this.setState({ books: romanceBooks });
+                            }}
                         />
                         <ButtonComponent
                             theme="warning"
                             Btncontent="Sci-fi"
-                            onClick={() => this.changeCategory("Sci-fi")}
+                            onClick={() => {
+                                this.setState({ books: sciFiBooks });
+                            }}
                         />
                     </div>
 
-                    {books.map((book) => (
+                    {this.state.books.map((book) => (
                         <Col key={`book-${book.asin}`} xs={12} md={6} lg={4} className="my-2 p-3">
                             <Card className="h-100">
                                 <div className="h-100">
