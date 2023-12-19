@@ -19,6 +19,7 @@ const MyFooter = (props) => {
                                 <span> (H. P. Lovecraft, Nyarlathotep)</span>
                             </p>
                         </blockquote>
+                        <p>{props.testo_par}</p>
                     </Col>
                 </Row>
             </Container>
