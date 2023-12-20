@@ -9,14 +9,19 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import ButtonComponent from "./ButtonComponent";
+import { Badge } from "react-bootstrap";
 
 class AllTheBooks extends Component {
     state = {
         books: fantasyBooks,
         counter: 0,
+        badgeColor: "danger",
     };
 
     render() {
+        /* riassegno la proprietà di this.state.books alla variabile booksCollection e la passo al metodo map  */
+        const booksCollection = this.state.books;
+
         return (
             <Container>
                 <Row>
@@ -29,6 +34,7 @@ class AllTheBooks extends Component {
                                 this.setState((prevState) => ({
                                     books: fantasyBooks,
                                     counter: prevState.counter + 1,
+                                    badgeColor: "danger",
                                 }));
                             }}
                         />
@@ -39,6 +45,7 @@ class AllTheBooks extends Component {
                                 this.setState((prevState) => ({
                                     books: horrorBooks,
                                     counter: prevState.counter + 1,
+                                    badgeColor: "info",
                                 }));
                             }}
                         />
@@ -49,6 +56,7 @@ class AllTheBooks extends Component {
                                 this.setState((prevState) => ({
                                     books: historyBooks,
                                     counter: prevState.counter + 1,
+                                    badgeColor: "success",
                                 }));
                             }}
                         />
@@ -59,6 +67,7 @@ class AllTheBooks extends Component {
                                 this.setState((prevState) => ({
                                     books: romanceBooks,
                                     counter: prevState.counter + 1,
+                                    badgeColor: "primary",
                                 }));
                             }}
                         />
@@ -70,6 +79,7 @@ class AllTheBooks extends Component {
                                 this.setState((prevState) => ({
                                     books: sciFiBooks,
                                     counter: prevState.counter + 1,
+                                    badgeColor: "warning",
                                 }));
                             }}
                         />
@@ -77,7 +87,7 @@ class AllTheBooks extends Component {
                         <h4 className="fs-3 m-0 d-flex align-item-center">count: {this.state.counter}</h4>
                     </div>
 
-                    {this.state.books.map((book) => (
+                    {booksCollection.map((book) => (
                         <Col key={`book-${book.asin}`} xs={12} md={6} lg={4} className="my-2 p-3">
                             <Card className="h-100">
                                 <div className="h-100">
@@ -86,7 +96,13 @@ class AllTheBooks extends Component {
                                 </div>
 
                                 <Card.Body className="h-auto d-flex flex-column justify-content-center">
-                                    <Card.Title>{book.title}</Card.Title>
+                                    <Card.Title>{book.title}</Card.Title>{" "}
+                                    <div>
+                                        <Badge bg={this.state.badgeColor} className="p-2">
+                                            {" "}
+                                            {book.category}{" "}
+                                        </Badge>
+                                    </div>
                                     <Card.Text className="fs-3 text-primary">{book.price}$</Card.Text>
                                     <ButtonComponent theme="success" Btncontent="Add To Cart" />
                                     <ButtonComponent theme="danger" Btncontent="Eliminate" />
