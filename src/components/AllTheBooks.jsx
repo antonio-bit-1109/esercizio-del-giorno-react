@@ -20,8 +20,9 @@ class AllTheBooks extends Component {
         return (
             <Container>
                 <Row>
-                    <div className="d-flex justify-content-center gap-2">
+                    <div className="d-flex justify-content-center gap-2 flex-wrap">
                         <ButtonComponent
+                            margin="mx-1"
                             theme="danger"
                             Btncontent="Fantasy"
                             onClick={() => {
@@ -62,6 +63,7 @@ class AllTheBooks extends Component {
                             }}
                         />
                         <ButtonComponent
+                            margin="me-4"
                             theme="warning"
                             Btncontent="Sci-fi"
                             onClick={() => {
@@ -72,7 +74,7 @@ class AllTheBooks extends Component {
                             }}
                         />
 
-                        <h4 className="fs-3">count: {this.state.counter}</h4>
+                        <h4 className="fs-3 m-0 d-flex align-item-center">count: {this.state.counter}</h4>
                     </div>
 
                     {this.state.books.map((book) => (
