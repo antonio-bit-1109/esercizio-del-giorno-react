@@ -13,48 +13,66 @@ import ButtonComponent from "./ButtonComponent";
 class AllTheBooks extends Component {
     state = {
         books: fantasyBooks,
+        counter: 0,
     };
 
     render() {
         return (
             <Container>
                 <Row>
-                    <div>
+                    <div className="d-flex justify-content-center gap-2">
                         <ButtonComponent
                             theme="danger"
                             Btncontent="Fantasy"
                             onClick={() => {
-                                this.setState({ books: fantasyBooks });
+                                this.setState((prevState) => ({
+                                    books: fantasyBooks,
+                                    counter: prevState.counter + 1,
+                                }));
                             }}
                         />
                         <ButtonComponent
                             theme="info"
                             Btncontent="Horror"
                             onClick={() => {
-                                this.setState({ books: horrorBooks });
+                                this.setState((prevState) => ({
+                                    books: horrorBooks,
+                                    counter: prevState.counter + 1,
+                                }));
                             }}
                         />
                         <ButtonComponent
                             theme="success"
                             Btncontent="History"
                             onClick={() => {
-                                this.setState({ books: historyBooks });
+                                this.setState((prevState) => ({
+                                    books: historyBooks,
+                                    counter: prevState.counter + 1,
+                                }));
                             }}
                         />
                         <ButtonComponent
                             theme="primary"
                             Btncontent="Romance"
                             onClick={() => {
-                                this.setState({ books: romanceBooks });
+                                this.setState((prevState) => ({
+                                    books: romanceBooks,
+                                    counter: prevState.counter + 1,
+                                }));
                             }}
                         />
                         <ButtonComponent
                             theme="warning"
                             Btncontent="Sci-fi"
                             onClick={() => {
-                                this.setState({ books: sciFiBooks });
+                                this.setState((prevState) => ({
+                                    books: sciFiBooks,
+                                    counter: prevState.counter + 1,
+                                }));
                             }}
                         />
+
+                        <h4 className="fs-3">count: {this.state.counter}</h4>
                     </div>
 
                     {this.state.books.map((book) => (
