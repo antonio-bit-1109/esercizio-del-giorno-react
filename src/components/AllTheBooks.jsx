@@ -89,7 +89,7 @@ class AllTheBooks extends Component {
 
                     {booksCollection.map((book) => (
                         <Col key={`book-${book.asin}`} xs={12} md={6} lg={4} className="my-2 p-3">
-                            <Card className="h-100">
+                            <Card className="h-100 text-center">
                                 <div className="h-100">
                                     {" "}
                                     <Card.Img variant="top" src={book.img} className="img-format" />
