@@ -37,8 +37,15 @@ class FormComponent extends Component {
                                     type="email"
                                     placeholder="inserisci la tua email..."
                                     value={this.state.info.email}
-                                    onChange={(event) => {
+                                    // METODO SINTETICO COMUNE A TUTTI I CAMPI FORM
+
+                                    /* onChange={(event) => {
                                         this.handleChange("email", event.target.value);
+                                    }} */
+
+                                    // METODO LUNGO DOVE SCRIVO OGNI VOLTA L'EVENTO ONCHANGE
+                                    onChange={(event) => {
+                                        this.setState({ info: { ...this.state.info, email: event.target.value } });
                                     }}
                                 />
                             </Form.Group>
