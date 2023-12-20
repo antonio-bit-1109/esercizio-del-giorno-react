@@ -1,3 +1,4 @@
+import { Button } from "react-bootstrap";
 import { Component } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
@@ -23,12 +24,49 @@ class FormComponent extends Component {
         this.setState({ info: { ...this.state.info, [propName]: propValue } });
     };
 
+    handleSubmit = (event) => {
+        event.preventDefault();
+
+        const options = {
+            method: "POST",
+            body: JSON.stringify(this.state.reservation),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        };
+
+        fetch("https://striveschool-api.herokuapp.com/api/reservation", options)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                } else {
+                    return response.json();
+                }
+            })
+
+            .then((onResponseData) => {
+                this.setState({
+                    info: {
+                        email: "",
+                        name: "",
+                        surname: "",
+                        adult: false,
+                        comment: "",
+                    },
+                });
+            })
+
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
     render() {
         return (
             <Container fluid="md">
                 <Row className="justify-content-center">
                     <Col xs={12} md={10} lg={8}>
-                        <Form className="mt-5">
+                        <Form onSubmit={this.handleSubmit} className="mt-5">
                             <h3 className="text-center">(●'◡'●) Aspetta un attimo...(●'◡'●)</h3>
 
                             <Form.Group className="mb-3" controlId="formEmail">
@@ -91,6 +129,9 @@ class FormComponent extends Component {
                                         this.handleChange("comment", event.target.value);
                                     }}
                                 />
+                                <Button className="mt-3" variant="primary" type="submit">
+                                    Submit
+                                </Button>
                             </Form.Group>
                         </Form>
                     </Col>
