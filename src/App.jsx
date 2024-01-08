@@ -6,7 +6,7 @@ import Welcome from "./components/Welcome";
 import AllTheBooks from "./components/AllTheBooks";
 import FormComponent from "./components/FormComponent";
 
-function App() {
+const App = () => {
     return (
         <div className="App">
             <MyNav home="home" about="Abous Us" browse="Find Us" />
@@ -16,6 +16,6 @@ function App() {
             <MyFooter testo_par="questo è del testo passato tramite props" />
         </div>
     );
-}
+};
 
 export default App;
